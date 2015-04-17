@@ -10,11 +10,11 @@ import static spark.Spark.post;
 
 public class Application implements SparkApplication {
 
-    private final Resource resource = new Resource();
+    private final Resource resource;
 
-//    public Application(Resource resource) {
-//        this.resource = resource;
-//    }
+    public Application(Resource resource) {
+        this.resource = resource;
+    }
 
     @Override
     public void init() {
