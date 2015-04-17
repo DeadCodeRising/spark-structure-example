@@ -1,5 +1,7 @@
 package com.deadcoderising;
 
+import spark.Request;
+import spark.Response;
 import spark.Route;
 import spark.servlet.SparkApplication;
 
@@ -8,11 +10,11 @@ import static spark.Spark.post;
 
 public class Application implements SparkApplication {
 
-    private final Resource resource;
+    private final Resource resource = new Resource();
 
-    public Application(Resource resource) {
-        this.resource = resource;
-    }
+//    public Application(Resource resource) {
+//        this.resource = resource;
+//    }
 
     @Override
     public void init() {
@@ -21,7 +23,11 @@ public class Application implements SparkApplication {
         get("/:id", map((req, res) -> resource.get(req.params(":id"))));
     }
 
-    Route map(Converter converter) {
-        return (req, res) -> converter.route(req, res).handle(req,res);
+    Route map(Converter c) {
+        return (req, res) -> c.convert(req, res).handle(req,res);
+    }
+
+    private interface Converter {
+        public ResponseCreator convert(Request req, Response res);
     }
 }
