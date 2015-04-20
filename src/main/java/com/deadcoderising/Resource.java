@@ -1,9 +1,5 @@
 package com.deadcoderising;
 
-/**
- * User: Marius
- * Date: 17/04/15
- */
 public class Resource {
     public ResponseCreator get(String id) {
 

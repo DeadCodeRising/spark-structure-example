@@ -1,9 +1,5 @@
 package com.deadcoderising;
 
-/**
- * User: Marius
- * Date: 17/04/15
- */
 class MyResponse {
     public static ResponseCreator ok(String body) {
         return (req, res) -> {
